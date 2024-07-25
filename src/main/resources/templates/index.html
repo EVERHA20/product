@@ -38,7 +38,10 @@
                 <td th:text="${product.category}"></td>
                 <td>
                     <a class="btn btn-warning" th:href="@{/products/edit/{id}(id=${product.id})}">Editar</a>
-                    <a class="btn btn-danger" th:href="@{/products/delete/{id}(id=${product.id})}" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?')">Eliminar</a>
+                    <form th:action="@{/products/delete/{id}(id=${product.id})}" method="post" style="display:inline;">
+                        <input type="hidden" name="_method" value="DELETE"/>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?')">Eliminar</button>
+                    </form>
                 </td>
             </tr>
         </tbody>
